@@ -1,11 +1,11 @@
-<div>
+<div *ngIf="!clicked">
   <table class="table table-bordered">
     <tr>
-      <th><input type="button" value="ID" (click)="sortById();"></th>
+      <th><input type="button" value="Id" (click)="sortById();"></th>
       <th><input type="button" value="Name" (click)="sortByName();"></th>
       <th><input type="button" value="Sal" (click)="sortBySal();"></th>
       <th><input type="button" value="Dep" (click)="sortByDep();"></th>
-      <th><input type="button" value="Date" (click)="sortByjoiningdate();"></th>
+      <th><input type="button" value="joiningdate" (click)="sortByjoiningdate();"></th>
     </tr>
     <tr *ngFor='let info of information;let i=index'>
       <td>{{info.empId}}</td>
@@ -14,6 +14,17 @@
       <td>{{info.empDep}}</td>
       <td>{{info.empjoiningdate}}</td>
       <input type="button" value="Delete" (click)="delete(i)">
+      <input type="button" value="Update" (click)="update(i)">
     </tr>
   </table>
 </div>
+
+<div *ngIf="clicked">
+  ID<input type="number" [(ngModel)]="empId"><br>
+  Name<input type="text" [(ngModel)]="empName"><br>
+  Sal<input type="number" [(ngModel)]="empSal"><br>
+  Dep<input type="text" [(ngModel)]="empDep"><br>
+  Joining Date<input type="text" [(ngModel)]="empjoiningdate">
+  <input type="button" value="Update" (click)="validate()">
+</div>
+
